@@ -21,9 +21,9 @@ class My_Calculation extends Calculation {
 
     public static void main(String[] args) {
         int a = 20, b = 10;
-        My_Calculation obj = new My_Calculation();
-        obj.addition(a, b);
-        obj.Subtraction(a, b);
-        obj.multiplication(a, b);
+        My_Calculation c = new My_Calculation();
+        c.addition(a, b);
+        c.Subtraction(a, b);
+        c.multiplication(a, b);
     }
 }
