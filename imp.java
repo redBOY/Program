@@ -1,45 +1,97 @@
-package main.Program;
-
-    class imp {
-
-        // create an object of Node class
-        // represent the head of the linked list
-        Node head;
+package main.main.Program;
 
 
-        // static inner class
-        static class Node {
-            int value;
+// Java program to implement
+// a Singly Linked List
+        public class imp {
 
-            // connect each node to next node
-            Node next;
+            Node head; // head of list
 
-            Node(int d) {
-                value = d;
-                next = null;
+            // Linked list Node.
+            // Node is a static nested class
+            // so main() can access it
+            static class Node {
+
+                int data;
+                Node next;
+
+                // Constructor
+                Node(int d)
+                {
+                    data = d;
+                    next = null;
+                }
+            }
+
+            // Method to insert a new node
+            public static imp insert(imp list,
+                                            int data)
+            {
+                // Create a new node with given data
+                Node new_node = new Node(data);
+                new_node.next = null;
+
+                // If the Linked List is empty,
+                // then make the new node as head
+                if (list.head == null) {
+                    list.head = new_node;
+                }
+                else {
+                    // Else traverse till the last node
+                    // and insert the new_node there
+                    Node last = list.head;
+                    while (last.next != null) {
+                        last = last.next;
+                    }
+
+                    // Insert the new_node at last node
+                    last.next = new_node;
+                }
+
+                // Return the list by head
+                return list;
+            }
+
+            // Method to print the LinkedList.
+            public static void printList(imp list)
+            {
+                Node currNode = list.head;
+
+                System.out.print("LinkedList: ");
+
+                // Traverse through the LinkedList
+                while (currNode != null) {
+                    // Print the data at current node
+                    System.out.print(currNode.data + " ");
+
+                    // Go to next node
+                    currNode = currNode.next;
+                }
+            }
+
+            // **************MAIN METHOD**************
+
+            // method to create a Singly linked list with n nodes
+            public static void main(String[] args)
+            {
+                /* Start with the empty list. */
+                imp list = new imp();
+
+                //
+                // ******INSERTION******
+                //
+
+                // Insert the values
+                list = insert(list, 1);
+                list = insert(list, 2);
+                list = insert(list, 3);
+                list = insert(list, 4);
+                list = insert(list, 5);
+                list = insert(list, 6);
+                list = insert(list, 7);
+                list = insert(list, 8);
+
+                // Print the LinkedList
+                printList(list);
             }
         }
-
-        public static void main(String[] args) {
-
-            // create an object of LinkedList
-            imp linkedList = new imp();
-
-            // assign values to each linked list node
-            linkedList.head = new Node(1);
-            Node second = new Node(2);
-            Node third = new Node(3);
-
-            // connect each node of linked list to next node
-            linkedList.head.next = second;
-            second.next = third;
-
-            // printing node-value
-            System.out.print("LinkedList: ");
-            while (linkedList.head != null) {
-                System.out.print(linkedList.head.value + " ");
-                linkedList.head = linkedList.head.next;
-            }
-        }
-    }
-
